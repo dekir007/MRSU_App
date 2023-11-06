@@ -124,13 +124,3 @@ color = Color(0.670588, 0.760784, 0.909804, 1)
 libraries = {
 "": SubResource("AnimationLibrary_ga2cy")
 }
-
-[node name="HTTPRequest" type="HTTPRequest" parent="."]
-download_chunk_size = 4096
-use_threads = true
-
-[node name="GetPhoto" type="HTTPRequest" parent="."]
-download_chunk_size = 4096
-use_threads = true
-
-[connection signal="request_completed" from="GetPhoto" to="." method="_on_get_photo_request_completed"]

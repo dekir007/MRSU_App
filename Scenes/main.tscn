@@ -1,9 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://87h5xobgdvim"]
+[gd_scene load_steps=13 format=3 uid="uid://87h5xobgdvim"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_ghlfg"]
 [ext_resource type="Texture2D" uid="uid://14omwy1wyjlh" path="res://Assets/home.png" id="2_as4mo"]
-[ext_resource type="PackedScene" uid="uid://b1plmm0dpfumg" path="res://Scenes/MainTabs/profile.tscn" id="2_l3bvb"]
-[ext_resource type="PackedScene" uid="uid://bnxnaeja6awdo" path="res://Scenes/MainTabs/subjects.tscn" id="3_48c5l"]
 [ext_resource type="Texture2D" uid="uid://sca242aale68" path="res://Assets/graduation.png" id="3_rmy2n"]
 [ext_resource type="Texture2D" uid="uid://ik64smu5ojxa" path="res://Assets/chat.png" id="7_tsc25"]
 
@@ -75,14 +73,6 @@ script = ExtResource("1_ghlfg")
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
-
-[node name="ProfileTest" parent="MainControl" instance=ExtResource("2_l3bvb")]
-visible = false
-layout_mode = 1
-
-[node name="SubjectsTest" parent="MainControl" instance=ExtResource("3_48c5l")]
-visible = false
-layout_mode = 1
 
 [node name="Control2" type="Control" parent="."]
 custom_minimum_size = Vector2(0, 170)

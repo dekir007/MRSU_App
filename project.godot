@@ -22,6 +22,7 @@ config/icon="res://icon.svg"
 Globals="*res://Scripts/Autoloads/globals.gd"
 AuthService="*res://Scripts/Autoloads/auth_service.gd"
 TimetableService="*res://Scripts/Autoloads/timetable_service.gd"
+ProfileService="*res://Scripts/Autoloads/profile_service.gd"
 
 [display]
 

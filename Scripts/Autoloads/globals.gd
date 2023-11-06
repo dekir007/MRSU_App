@@ -5,7 +5,7 @@ enum RedirectTarget {
 }
 
 signal discipline_rating_recieved
-signal time_table_recieved
+#signal time_table_recieved
 
 var base_url : String = "https://papi.mrsu.ru/"
 var token_data : TokenData :
