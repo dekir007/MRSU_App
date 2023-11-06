@@ -28,8 +28,9 @@ func _auth_http_request_completed(_result, _response_code, _headers, body) -> vo
 	print(Globals.token_data)
 	
 	token_recieved.emit()
-	var thread = Thread.new()
-	thread.start(func(): Globals.save_token())
+	Globals.save_token()
+	#var thread = Thread.new()
+	#thread.start(func(): Globals.save_token())
 	#thread.wait_to_finish()
 
 func refresh_token():

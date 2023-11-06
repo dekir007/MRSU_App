@@ -214,7 +214,6 @@ layout_mode = 2
 theme = SubResource("Theme_bk5e3")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_placeholder_color = Color(0, 0, 0, 1)
-theme_override_colors/caret_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 36
 theme_override_styles/normal = SubResource("StyleBoxEmpty_lutm3")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_6g31v")
@@ -224,6 +223,7 @@ context_menu_enabled = false
 wrap_mode = 1
 scroll_smooth = true
 scroll_past_end_of_file = true
+caret_blink = true
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/MarginContainer/PanelContainer"]
 custom_minimum_size = Vector2(0, 90)

@@ -3,6 +3,7 @@ extends Control
 @onready var photo: TextureRect = %Photo
 @onready var fio_label: Label = %FIO_Label
 @onready var id_label: Label = %IdLabel
+
 @onready var http_request: HTTPRequest = $HTTPRequest
 @onready var get_photo: HTTPRequest = $GetPhoto
 
@@ -10,9 +11,9 @@ func _ready() -> void:
 	if !visible:
 		return
 	http_request.request_completed.connect(self._http_request_completed)
+	# for tests
 	if Globals.token_data == null:
 		return
-	#var body = JSON.new().stringify({"name": "Godette"})
 	var _error = http_request.request(Globals.base_url+"v1/User", Globals.get_auth_header(), HTTPClient.METHOD_GET, "")
 
 

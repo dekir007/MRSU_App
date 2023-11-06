@@ -19,6 +19,10 @@ outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pt4bh"]
+content_margin_left = 25.0
+content_margin_top = 15.0
+content_margin_right = 25.0
+content_margin_bottom = 15.0
 bg_color = Color(0.870588, 0.462745, 0.466667, 1)
 corner_radius_top_left = 50
 corner_radius_top_right = 50
@@ -109,14 +113,7 @@ layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_pt4bh")
 
-[node name="MarginContainer" type="MarginContainer" parent="Vbox/ScrollContainer/Items/ScrollContainer2/Events/PanelContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 25
-theme_override_constants/margin_top = 15
-theme_override_constants/margin_right = 25
-theme_override_constants/margin_bottom = 15
-
-[node name="Label" type="Label" parent="Vbox/ScrollContainer/Items/ScrollContainer2/Events/PanelContainer/MarginContainer"]
+[node name="Label" type="Label" parent="Vbox/ScrollContainer/Items/ScrollContainer2/Events/PanelContainer"]
 layout_mode = 2
 text = "grffewfewfew
 
@@ -130,14 +127,7 @@ layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_pt4bh")
 
-[node name="MarginContainer" type="MarginContainer" parent="Vbox/ScrollContainer/Items/ScrollContainer2/Events/PanelContainer2"]
-layout_mode = 2
-theme_override_constants/margin_left = 25
-theme_override_constants/margin_top = 15
-theme_override_constants/margin_right = 25
-theme_override_constants/margin_bottom = 15
-
-[node name="Label" type="Label" parent="Vbox/ScrollContainer/Items/ScrollContainer2/Events/PanelContainer2/MarginContainer"]
+[node name="Label" type="Label" parent="Vbox/ScrollContainer/Items/ScrollContainer2/Events/PanelContainer2"]
 layout_mode = 2
 text = "grffewfewfew
 
@@ -151,14 +141,7 @@ layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_pt4bh")
 
-[node name="MarginContainer" type="MarginContainer" parent="Vbox/ScrollContainer/Items/ScrollContainer2/Events/PanelContainer3"]
-layout_mode = 2
-theme_override_constants/margin_left = 25
-theme_override_constants/margin_top = 15
-theme_override_constants/margin_right = 25
-theme_override_constants/margin_bottom = 15
-
-[node name="Label" type="Label" parent="Vbox/ScrollContainer/Items/ScrollContainer2/Events/PanelContainer3/MarginContainer"]
+[node name="Label" type="Label" parent="Vbox/ScrollContainer/Items/ScrollContainer2/Events/PanelContainer3"]
 layout_mode = 2
 text = "grffewfewfew
 
@@ -172,14 +155,7 @@ layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_pt4bh")
 
-[node name="MarginContainer" type="MarginContainer" parent="Vbox/ScrollContainer/Items/ScrollContainer2/Events/PanelContainer4"]
-layout_mode = 2
-theme_override_constants/margin_left = 25
-theme_override_constants/margin_top = 15
-theme_override_constants/margin_right = 25
-theme_override_constants/margin_bottom = 15
-
-[node name="Label" type="Label" parent="Vbox/ScrollContainer/Items/ScrollContainer2/Events/PanelContainer4/MarginContainer"]
+[node name="Label" type="Label" parent="Vbox/ScrollContainer/Items/ScrollContainer2/Events/PanelContainer4"]
 layout_mode = 2
 text = "grffewfewfew
 
@@ -193,56 +169,7 @@ layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_pt4bh")
 
-[node name="MarginContainer" type="MarginContainer" parent="Vbox/ScrollContainer/Items/ScrollContainer2/Events/PanelContainer5"]
-layout_mode = 2
-theme_override_constants/margin_left = 25
-theme_override_constants/margin_top = 15
-theme_override_constants/margin_right = 25
-theme_override_constants/margin_bottom = 15
-
-[node name="Label" type="Label" parent="Vbox/ScrollContainer/Items/ScrollContainer2/Events/PanelContainer5/MarginContainer"]
-layout_mode = 2
-text = "grffewfewfew
-
-grgrg
-grggrr
-rggrr"
-label_settings = SubResource("LabelSettings_eui6y")
-
-[node name="PanelContainer6" type="PanelContainer" parent="Vbox/ScrollContainer/Items/ScrollContainer2/Events"]
-layout_mode = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_pt4bh")
-
-[node name="MarginContainer" type="MarginContainer" parent="Vbox/ScrollContainer/Items/ScrollContainer2/Events/PanelContainer6"]
-layout_mode = 2
-theme_override_constants/margin_left = 25
-theme_override_constants/margin_top = 15
-theme_override_constants/margin_right = 25
-theme_override_constants/margin_bottom = 15
-
-[node name="Label" type="Label" parent="Vbox/ScrollContainer/Items/ScrollContainer2/Events/PanelContainer6/MarginContainer"]
-layout_mode = 2
-text = "grffewfewfew
-
-grgrg
-grggrr
-rggrr"
-label_settings = SubResource("LabelSettings_eui6y")
-
-[node name="PanelContainer7" type="PanelContainer" parent="Vbox/ScrollContainer/Items/ScrollContainer2/Events"]
-layout_mode = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_pt4bh")
-
-[node name="MarginContainer" type="MarginContainer" parent="Vbox/ScrollContainer/Items/ScrollContainer2/Events/PanelContainer7"]
-layout_mode = 2
-theme_override_constants/margin_left = 25
-theme_override_constants/margin_top = 15
-theme_override_constants/margin_right = 25
-theme_override_constants/margin_bottom = 15
-
-[node name="Label" type="Label" parent="Vbox/ScrollContainer/Items/ScrollContainer2/Events/PanelContainer7/MarginContainer"]
+[node name="Label" type="Label" parent="Vbox/ScrollContainer/Items/ScrollContainer2/Events/PanelContainer5"]
 layout_mode = 2
 text = "grffewfewfew
 
@@ -336,7 +263,7 @@ editor_description = "
 			
 Give feedback at: https://github.com/ArshvirGoraya/Godot-Collapsible-Container"
 clip_contents = true
-custom_minimum_size = Vector2(1030, 555)
+custom_minimum_size = Vector2(1030, 615)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
@@ -362,14 +289,7 @@ layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_pt4bh")
 
-[node name="MarginContainer" type="MarginContainer" parent="Vbox/ScrollContainer/Items/TimeTableVBox/GroupContainer/VBoxContainer/CollapsibleContainer/Classes/PanelContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 25
-theme_override_constants/margin_top = 15
-theme_override_constants/margin_right = 25
-theme_override_constants/margin_bottom = 15
-
-[node name="Label" type="Label" parent="Vbox/ScrollContainer/Items/TimeTableVBox/GroupContainer/VBoxContainer/CollapsibleContainer/Classes/PanelContainer/MarginContainer"]
+[node name="Label" type="Label" parent="Vbox/ScrollContainer/Items/TimeTableVBox/GroupContainer/VBoxContainer/CollapsibleContainer/Classes/PanelContainer"]
 layout_mode = 2
 text = "grffewfewfew
 
@@ -383,14 +303,7 @@ layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_pt4bh")
 
-[node name="MarginContainer" type="MarginContainer" parent="Vbox/ScrollContainer/Items/TimeTableVBox/GroupContainer/VBoxContainer/CollapsibleContainer/Classes/PanelContainer2"]
-layout_mode = 2
-theme_override_constants/margin_left = 25
-theme_override_constants/margin_top = 15
-theme_override_constants/margin_right = 25
-theme_override_constants/margin_bottom = 15
-
-[node name="Label" type="Label" parent="Vbox/ScrollContainer/Items/TimeTableVBox/GroupContainer/VBoxContainer/CollapsibleContainer/Classes/PanelContainer2/MarginContainer"]
+[node name="Label" type="Label" parent="Vbox/ScrollContainer/Items/TimeTableVBox/GroupContainer/VBoxContainer/CollapsibleContainer/Classes/PanelContainer2"]
 layout_mode = 2
 text = "grffewfewfew
 
@@ -436,7 +349,7 @@ editor_description = "
 			
 Give feedback at: https://github.com/ArshvirGoraya/Godot-Collapsible-Container"
 clip_contents = true
-custom_minimum_size = Vector2(1030, 555)
+custom_minimum_size = Vector2(1030, 615)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
@@ -462,14 +375,7 @@ layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_pt4bh")
 
-[node name="MarginContainer" type="MarginContainer" parent="Vbox/ScrollContainer/Items/TimeTableVBox/GroupContainer2/VBoxContainer/CollapsibleContainer/Classes/PanelContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 25
-theme_override_constants/margin_top = 15
-theme_override_constants/margin_right = 25
-theme_override_constants/margin_bottom = 15
-
-[node name="Label" type="Label" parent="Vbox/ScrollContainer/Items/TimeTableVBox/GroupContainer2/VBoxContainer/CollapsibleContainer/Classes/PanelContainer/MarginContainer"]
+[node name="Label" type="Label" parent="Vbox/ScrollContainer/Items/TimeTableVBox/GroupContainer2/VBoxContainer/CollapsibleContainer/Classes/PanelContainer"]
 layout_mode = 2
 text = "grffewfewfew
 
@@ -483,14 +389,7 @@ layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_pt4bh")
 
-[node name="MarginContainer" type="MarginContainer" parent="Vbox/ScrollContainer/Items/TimeTableVBox/GroupContainer2/VBoxContainer/CollapsibleContainer/Classes/PanelContainer2"]
-layout_mode = 2
-theme_override_constants/margin_left = 25
-theme_override_constants/margin_top = 15
-theme_override_constants/margin_right = 25
-theme_override_constants/margin_bottom = 15
-
-[node name="Label" type="Label" parent="Vbox/ScrollContainer/Items/TimeTableVBox/GroupContainer2/VBoxContainer/CollapsibleContainer/Classes/PanelContainer2/MarginContainer"]
+[node name="Label" type="Label" parent="Vbox/ScrollContainer/Items/TimeTableVBox/GroupContainer2/VBoxContainer/CollapsibleContainer/Classes/PanelContainer2"]
 layout_mode = 2
 text = "grffewfewfew
 
@@ -536,7 +435,7 @@ editor_description = "
 			
 Give feedback at: https://github.com/ArshvirGoraya/Godot-Collapsible-Container"
 clip_contents = true
-custom_minimum_size = Vector2(1030, 555)
+custom_minimum_size = Vector2(1030, 615)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
@@ -562,14 +461,7 @@ layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_pt4bh")
 
-[node name="MarginContainer" type="MarginContainer" parent="Vbox/ScrollContainer/Items/TimeTableVBox/GroupContainer3/VBoxContainer/CollapsibleContainer/Classes/PanelContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 25
-theme_override_constants/margin_top = 15
-theme_override_constants/margin_right = 25
-theme_override_constants/margin_bottom = 15
-
-[node name="Label" type="Label" parent="Vbox/ScrollContainer/Items/TimeTableVBox/GroupContainer3/VBoxContainer/CollapsibleContainer/Classes/PanelContainer/MarginContainer"]
+[node name="Label" type="Label" parent="Vbox/ScrollContainer/Items/TimeTableVBox/GroupContainer3/VBoxContainer/CollapsibleContainer/Classes/PanelContainer"]
 layout_mode = 2
 text = "grffewfewfew
 
@@ -583,14 +475,7 @@ layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_pt4bh")
 
-[node name="MarginContainer" type="MarginContainer" parent="Vbox/ScrollContainer/Items/TimeTableVBox/GroupContainer3/VBoxContainer/CollapsibleContainer/Classes/PanelContainer2"]
-layout_mode = 2
-theme_override_constants/margin_left = 25
-theme_override_constants/margin_top = 15
-theme_override_constants/margin_right = 25
-theme_override_constants/margin_bottom = 15
-
-[node name="Label" type="Label" parent="Vbox/ScrollContainer/Items/TimeTableVBox/GroupContainer3/VBoxContainer/CollapsibleContainer/Classes/PanelContainer2/MarginContainer"]
+[node name="Label" type="Label" parent="Vbox/ScrollContainer/Items/TimeTableVBox/GroupContainer3/VBoxContainer/CollapsibleContainer/Classes/PanelContainer2"]
 layout_mode = 2
 text = "grffewfewfew
 

@@ -14,6 +14,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8uwf7"]
 shader = ExtResource("2_u47wi")
+shader_parameter/focus_color = Color(0.95, 0.95, 0.95, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t70i1"]
 
@@ -79,6 +80,7 @@ corner_radius_bottom_left = 50
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8a4gu"]
 shader = ExtResource("2_u47wi")
+shader_parameter/focus_color = Color(0.95, 0.95, 0.95, 1)
 
 [sub_resource type="FontVariation" id="FontVariation_gqbxr"]
 
@@ -105,9 +107,11 @@ expand_margin_top = 10.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_q1t4u"]
 shader = ExtResource("2_u47wi")
+shader_parameter/focus_color = Color(0.95, 0.95, 0.95, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_y7tp3"]
 shader = ExtResource("2_u47wi")
+shader_parameter/focus_color = Color(0.95, 0.95, 0.95, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_cshqg"]
 font_size = 196

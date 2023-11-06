@@ -17,10 +17,7 @@ var token_data : TokenData :
 		return token_data
 var key : String = "gjlbweg;vwevilwvwe".sha256_text()
 
-
-#var auth_http_request : HTTPRequest
 var discipline_rating_http_request : HTTPRequest
-var time_table_http_request : HTTPRequest
 
 # used for communication and discipline_rating
 var current_disc_name:String
@@ -29,22 +26,18 @@ var current_disc_id:int
 # for discipline_rating scene
 var discipline_rating : Dictionary
 
-# for time_table scene
-var time_table : Array
-
 func _ready() -> void:
 	discipline_rating_http_request = HTTPRequest.new()
 	init_http_request(self, discipline_rating_http_request, self._discipline_rating_http_request_completed)
-	time_table_http_request = HTTPRequest.new()
-	init_http_request(self, time_table_http_request, self._time_table_http_request_completed)
+	
 
 func get_token_from_disk(path:String = "user://token.data") -> Error:
 	#if ResourceLoader.exists(path):
 	var f : FileAccess =  FileAccess.open_encrypted_with_pass(path, FileAccess.READ, key)
 	if f != null:
 		var a = JSON.parse_string(f.get_as_text())
-		print(a)
-		token_data = a
+		#print(a)
+		token_data = TokenData.from_dict(a)
 		if token_data.is_expired():
 			AuthService.refresh_token()
 			await AuthService.token_recieved
@@ -55,7 +48,8 @@ func get_token_from_disk(path:String = "user://token.data") -> Error:
 
 func save_token(path:String = "user://token.data"):
 	var f : FileAccess =  FileAccess.open_encrypted_with_pass(path, FileAccess.WRITE, key)
-	var saved = JSON.stringify(token_data)
+	var saved = JSON.stringify(token_data.to_dict())
+	#print(ResourceSaver.save(token_data, "user://test.data"))
 	f.store_string(saved)
 	print("saved :" + saved)
 
@@ -64,19 +58,6 @@ func init_http_request(parent : Node, http_request: HTTPRequest, callback : Call
 	http_request.use_threads = true
 	parent.add_child(http_request)
 	http_request.request_completed.connect(callback)
-
-func get_time_table(date : String = Time.get_datetime_string_from_system().left(10)) -> Array:
-	time_table_http_request.request(base_url + "v1/StudentTimeTable?date=" + date,
-		Globals.get_auth_header(),
-		HTTPClient.METHOD_GET)
-	
-	await time_table_recieved
-	return time_table
-
-func _time_table_http_request_completed(_result, _response_code, _headers, body) -> void:
-	var response = JSON.parse_string(body.get_string_from_utf8())
-	time_table = response
-	time_table_recieved.emit()
 
 var hh_mm_regex : RegEx
 

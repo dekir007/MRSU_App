@@ -19,8 +19,9 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Globals="*res://Scripts/globals.gd"
-AuthService="*res://Scripts/auth_service.gd"
+Globals="*res://Scripts/Autoloads/globals.gd"
+AuthService="*res://Scripts/Autoloads/auth_service.gd"
+TimetableService="*res://Scripts/Autoloads/timetable_service.gd"
 
 [display]
 

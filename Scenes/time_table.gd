@@ -7,8 +7,10 @@ extends Control
 var data : Array
 
 func _ready() -> void:
-	#data = await Globals.get_time_table()
+	data = await TimetableService.get_time_table()
+	#print(JSON.stringify(data, "\t"))
 	parse_data()
+	
 
 func parse_data():
 	for group in data:
