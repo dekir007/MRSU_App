@@ -1,0 +1,147 @@
+[gd_scene load_steps=15 format=3 uid="uid://87h5xobgdvim"]
+
+[ext_resource type="Script" path="res://Scripts/main.gd" id="1_ghlfg"]
+[ext_resource type="Texture2D" uid="uid://14omwy1wyjlh" path="res://Assets/home.png" id="2_as4mo"]
+[ext_resource type="PackedScene" uid="uid://b1plmm0dpfumg" path="res://Scenes/MainTabs/profile.tscn" id="2_l3bvb"]
+[ext_resource type="PackedScene" uid="uid://bnxnaeja6awdo" path="res://Scenes/MainTabs/subjects.tscn" id="3_48c5l"]
+[ext_resource type="Texture2D" uid="uid://sca242aale68" path="res://Assets/graduation.png" id="3_rmy2n"]
+[ext_resource type="Texture2D" uid="uid://ik64smu5ojxa" path="res://Assets/chat.png" id="7_tsc25"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7clhs"]
+bg_color = Color(0.313726, 0.611765, 0.937255, 1)
+border_width_top = 15
+border_color = Color(0.670588, 0.760784, 0.909804, 1)
+expand_margin_top = 5.0
+
+[sub_resource type="Shader" id="Shader_u2nuu"]
+resource_local_to_scene = true
+code = "shader_type canvas_item;
+
+uniform vec3 focus_color : source_color = vec3(0.95);
+
+void fragment() {
+	vec4 color = texture(TEXTURE, UV);
+    COLOR = vec4(focus_color, color.a);
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fo6um"]
+shader = SubResource("Shader_u2nuu")
+shader_parameter/focus_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Shader" id="Shader_gaiv7"]
+resource_local_to_scene = true
+code = "shader_type canvas_item;
+
+uniform vec3 focus_color : source_color = vec3(0.95);
+
+void fragment() {
+	vec4 color = texture(TEXTURE, UV);
+    COLOR = vec4(focus_color, color.a);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m7h6n"]
+shader = SubResource("Shader_gaiv7")
+shader_parameter/focus_color = Color(0.95, 0.95, 0.95, 1)
+
+[sub_resource type="Shader" id="Shader_wqonv"]
+code = "shader_type canvas_item;
+
+uniform vec3 focus_color : source_color = vec3(0.95);
+
+void fragment() {
+	vec4 color = texture(TEXTURE, UV);
+    COLOR = vec4(focus_color, color.a);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gy0ga"]
+shader = SubResource("Shader_wqonv")
+shader_parameter/focus_color = Color(0.827451, 0, 0.45098, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gpa80"]
+shader = SubResource("Shader_wqonv")
+shader_parameter/focus_color = Color(0.95, 0.95, 0.95, 1)
+
+[node name="Main" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+script = ExtResource("1_ghlfg")
+
+[node name="MainControl" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ProfileTest" parent="MainControl" instance=ExtResource("2_l3bvb")]
+visible = false
+layout_mode = 1
+
+[node name="SubjectsTest" parent="MainControl" instance=ExtResource("3_48c5l")]
+visible = false
+layout_mode = 1
+
+[node name="Control2" type="Control" parent="."]
+custom_minimum_size = Vector2(0, 170)
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="Panel" type="Panel" parent="Control2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7clhs")
+
+[node name="Footer" type="MarginContainer" parent="Control2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control2/Footer"]
+layout_mode = 2
+
+[node name="ProfileButton" type="TextureButton" parent="Control2/Footer/HBoxContainer"]
+material = SubResource("ShaderMaterial_fo6um")
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("2_as4mo")
+stretch_mode = 3
+
+[node name="SubjectsButton" type="TextureButton" parent="Control2/Footer/HBoxContainer"]
+material = SubResource("ShaderMaterial_m7h6n")
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("3_rmy2n")
+stretch_mode = 3
+
+[node name="TimeTableButton" type="TextureButton" parent="Control2/Footer/HBoxContainer"]
+material = SubResource("ShaderMaterial_gy0ga")
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("7_tsc25")
+stretch_mode = 3
+
+[node name="CommunicationButton" type="TextureButton" parent="Control2/Footer/HBoxContainer"]
+material = SubResource("ShaderMaterial_gpa80")
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("7_tsc25")
+stretch_mode = 3
+
+[connection signal="pressed" from="Control2/Footer/HBoxContainer/ProfileButton" to="." method="_on_profile_button_pressed"]
+[connection signal="pressed" from="Control2/Footer/HBoxContainer/SubjectsButton" to="." method="_on_subjects_button_pressed"]
+[connection signal="pressed" from="Control2/Footer/HBoxContainer/TimeTableButton" to="." method="_on_time_table_button_pressed"]
+[connection signal="pressed" from="Control2/Footer/HBoxContainer/CommunicationButton" to="." method="_on_communication_button_pressed"]

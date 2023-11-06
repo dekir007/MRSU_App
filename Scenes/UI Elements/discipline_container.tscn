@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=3 uid="uid://n34laaa2usxv"]
+
+[ext_resource type="Script" path="res://Scenes/UI Elements/discipline_container.gd" id="1_furv3"]
+[ext_resource type="StyleBox" uid="uid://c2a3v34y7va34" path="res://Styles/white button.tres" id="1_l13fs"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_yql2c"]
+font_size = 50
+font_color = Color(0, 0, 0, 1)
+
+[node name="DisciplineContainer" type="MarginContainer"]
+mouse_filter = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_right = 50
+script = ExtResource("1_furv3")
+
+[node name="Button" type="Button" parent="."]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+mouse_filter = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = ExtResource("1_l13fs")
+theme_override_styles/hover = ExtResource("1_l13fs")
+theme_override_styles/pressed = ExtResource("1_l13fs")
+theme_override_styles/focus = ExtResource("1_l13fs")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+label_settings = SubResource("LabelSettings_yql2c")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

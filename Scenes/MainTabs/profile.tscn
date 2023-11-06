@@ -1,0 +1,136 @@
+[gd_scene load_steps=10 format=3 uid="uid://b1plmm0dpfumg"]
+
+[ext_resource type="Texture2D" uid="uid://dy81ek7c4k24q" path="res://Assets/mrsu_background.jpg" id="1_idhop"]
+[ext_resource type="Script" path="res://Scenes/MainTabs/profile.gd" id="1_ivgcm"]
+[ext_resource type="Shader" path="res://Shaders/rect_to_circle.gdshader" id="2_htb0w"]
+[ext_resource type="Texture2D" uid="uid://edg8o3dtmpkt" path="res://Assets/noavatar.png" id="3_3pht6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4xp8y"]
+shader = ExtResource("2_htb0w")
+shader_parameter/border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_a3fdr"]
+font_size = 48
+shadow_size = 10
+shadow_color = Color(0, 0, 0, 0.694118)
+
+[sub_resource type="LabelSettings" id="LabelSettings_rbmgf"]
+font_size = 20
+font_color = Color(0.752941, 0.752941, 0.752941, 1)
+
+[sub_resource type="Animation" id="Animation_58ryl"]
+resource_name = "GetAway"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1200, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ga2cy"]
+_data = {
+"GetAway": SubResource("Animation_58ryl")
+}
+
+[node name="Profile" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.00146484
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(0, 875)
+script = ExtResource("1_ivgcm")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+self_modulate = Color(0.643137, 0.643137, 0.643137, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_idhop")
+expand_mode = 1
+
+[node name="ProfileVbox" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="VBoxContainer" parent="ProfileVbox"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.75
+
+[node name="HSeparator" type="HSeparator" parent="ProfileVbox/Control"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="Photo" type="TextureRect" parent="ProfileVbox/Control"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_4xp8y")
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("3_3pht6")
+
+[node name="FIO_Label" type="Label" parent="ProfileVbox/Control"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Surname
+Name Patronymic"
+label_settings = SubResource("LabelSettings_a3fdr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="IdLabel" type="Label" parent="ProfileVbox/Control"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "ID: 0000XXXXX"
+label_settings = SubResource("LabelSettings_rbmgf")
+horizontal_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="ProfileVbox"]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.670588, 0.760784, 0.909804, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ga2cy")
+}
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+download_chunk_size = 4096
+use_threads = true
+
+[node name="GetPhoto" type="HTTPRequest" parent="."]
+download_chunk_size = 4096
+use_threads = true
+
+[connection signal="request_completed" from="GetPhoto" to="." method="_on_get_photo_request_completed"]

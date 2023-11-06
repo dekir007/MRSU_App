@@ -1,0 +1,312 @@
+[gd_scene load_steps=29 format=3 uid="uid://2hrb5iwmt2if"]
+
+[ext_resource type="Texture2D" uid="uid://dy81ek7c4k24q" path="res://Assets/mrsu_background.jpg" id="1_80noc"]
+[ext_resource type="Texture2D" uid="uid://14omwy1wyjlh" path="res://Assets/home.png" id="2_mkko6"]
+[ext_resource type="Script" path="res://Scripts/login.gd" id="2_s1e38"]
+[ext_resource type="Shader" path="res://Shaders/white.gdshader" id="2_u47wi"]
+[ext_resource type="Texture2D" uid="uid://sca242aale68" path="res://Assets/graduation.png" id="3_c5m5u"]
+[ext_resource type="Texture2D" uid="uid://q6vw6v4awe04" path="res://Assets/user.png" id="3_debii"]
+[ext_resource type="Texture2D" uid="uid://m5qeok3j4645" path="res://Assets/lock.png" id="4_uysg3"]
+[ext_resource type="PackedScene" uid="uid://bcoi18d5npg2f" path="res://Scenes/UI Elements/InputLine.tscn" id="5_ww5fd"]
+[ext_resource type="Texture2D" uid="uid://tx1rq7ywxo3p" path="res://Assets/globe.png" id="6_adbsn"]
+[ext_resource type="Script" path="res://Scripts/InputLine.gd" id="7_b4s10"]
+[ext_resource type="Texture2D" uid="uid://b7cxuk8r40af0" path="res://Assets/line.png" id="7_cgcnw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8uwf7"]
+shader = ExtResource("2_u47wi")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t70i1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_imjxv"]
+
+[sub_resource type="Animation" id="Animation_s1cxj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_w8ini"]
+resource_name = "Scale"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y3kqm"]
+_data = {
+"RESET": SubResource("Animation_s1cxj"),
+"Scale": SubResource("Animation_w8ini")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n1gk8"]
+bg_color = Color(0.988235, 0.988235, 0.984314, 0.788235)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.345098, 0.345098, 0.345098, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yoe3t"]
+bg_color = Color(1, 1, 1, 0.886275)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_18lmr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8a4gu"]
+shader = ExtResource("2_u47wi")
+
+[sub_resource type="FontVariation" id="FontVariation_gqbxr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_56t7m"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="Theme" id="Theme_m574x"]
+MenuButton/colors/font_color = Color(0, 0, 0, 1)
+MenuButton/font_sizes/font_size = 64
+PopupMenu/colors/font_color = Color(0, 0, 0, 1)
+PopupMenu/font_sizes/font_size = 64
+PopupMenu/fonts/font = SubResource("FontVariation_gqbxr")
+PopupMenu/styles/panel = SubResource("StyleBoxFlat_56t7m")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nv1mv"]
+bg_color = Color(0.313726, 0.611765, 0.937255, 1)
+border_width_top = 15
+border_color = Color(0.670588, 0.760784, 0.909804, 1)
+expand_margin_top = 10.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q1t4u"]
+shader = ExtResource("2_u47wi")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y7tp3"]
+shader = ExtResource("2_u47wi")
+
+[sub_resource type="LabelSettings" id="LabelSettings_cshqg"]
+font_size = 196
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Login" type="TextureRect"]
+self_modulate = Color(0.643137, 0.643137, 0.643137, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_80noc")
+expand_mode = 4
+script = ExtResource("2_s1e38")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_right = 60
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+material = SubResource("ShaderMaterial_8uwf7")
+layout_mode = 2
+texture = ExtResource("3_debii")
+
+[node name="Username" parent="VBoxContainer/MarginContainer/HBoxContainer" instance=ExtResource("5_ww5fd")]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_t70i1")
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_right = 60
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer2/HBoxContainer"]
+material = SubResource("ShaderMaterial_8uwf7")
+layout_mode = 2
+texture = ExtResource("4_uysg3")
+
+[node name="Password" type="LineEdit" parent="VBoxContainer/MarginContainer2/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_placeholder_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 64
+theme_override_styles/focus = SubResource("StyleBoxEmpty_imjxv")
+placeholder_text = "Enter your password"
+secret = true
+context_menu_enabled = false
+virtual_keyboard_type = 6
+flat = true
+script = ExtResource("7_b4s10")
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer2/HBoxContainer/Password"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("7_cgcnw")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="VBoxContainer/MarginContainer2/HBoxContainer/Password"]
+libraries = {
+"": SubResource("AnimationLibrary_y3kqm")
+}
+
+[node name="MarginContainer4" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 20
+
+[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_right = 60
+
+[node name="Button" type="Button" parent="VBoxContainer/MarginContainer3"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_n1gk8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_yoe3t")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_n1gk8")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_18lmr")
+text = "
+Log In
+
+"
+
+[node name="Localization" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -156.0
+offset_bottom = 156.0
+grow_horizontal = 0
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+
+[node name="LanguageMenu" type="MenuButton" parent="Localization"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_8a4gu")
+layout_mode = 2
+theme = SubResource("Theme_m574x")
+icon = ExtResource("6_adbsn")
+item_count = 2
+popup/item_0/text = "Russian"
+popup/item_0/id = 0
+popup/item_1/text = "English"
+popup/item_1/id = 1
+
+[node name="Footer" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -148.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Panel" type="Panel" parent="Footer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_nv1mv")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Footer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HomeButton" type="TextureButton" parent="Footer/HBoxContainer"]
+material = SubResource("ShaderMaterial_q1t4u")
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("2_mkko6")
+stretch_mode = 3
+
+[node name="EnrolleeButton" type="TextureButton" parent="Footer/HBoxContainer"]
+material = SubResource("ShaderMaterial_y7tp3")
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+texture_normal = ExtResource("3_c5m5u")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.22
+anchor_right = 0.5
+anchor_bottom = 0.22
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "MRSU App"
+label_settings = SubResource("LabelSettings_cshqg")
+metadata/_edit_use_anchors_ = true
+
+[connection signal="focus_entered" from="VBoxContainer/MarginContainer2/HBoxContainer/Password" to="VBoxContainer/MarginContainer2/HBoxContainer/Password" method="_on_focus_entered"]
+[connection signal="focus_exited" from="VBoxContainer/MarginContainer2/HBoxContainer/Password" to="VBoxContainer/MarginContainer2/HBoxContainer/Password" method="_on_focus_exited"]
+[connection signal="pressed" from="VBoxContainer/MarginContainer3/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Footer/HBoxContainer/HomeButton" to="." method="_on_home_button_pressed"]
+[connection signal="pressed" from="Footer/HBoxContainer/EnrolleeButton" to="." method="_on_enrollee_button_pressed"]

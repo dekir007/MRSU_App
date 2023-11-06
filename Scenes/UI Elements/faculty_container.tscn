@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://drv0tr8oeph38"]
+
+[ext_resource type="StyleBox" uid="uid://dqarwib3ju241" path="res://Scenes/purple_button.tres" id="1_3d4ca"]
+[ext_resource type="Script" path="res://Scenes/UI Elements/faculty_container.gd" id="1_qdcbf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_goh0d"]
+font_size = 60
+
+[node name="FacultyContainer" type="MarginContainer"]
+theme_override_constants/margin_right = 50
+script = ExtResource("1_qdcbf")
+
+[node name="Button" type="Button" parent="."]
+custom_minimum_size = Vector2(0, 110)
+layout_mode = 2
+mouse_filter = 1
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = ExtResource("1_3d4ca")
+theme_override_styles/hover = ExtResource("1_3d4ca")
+theme_override_styles/pressed = ExtResource("1_3d4ca")
+theme_override_styles/focus = ExtResource("1_3d4ca")
+alignment = 0
+text_overrun_behavior = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+label_settings = SubResource("LabelSettings_goh0d")
+vertical_alignment = 1
+autowrap_mode = 2

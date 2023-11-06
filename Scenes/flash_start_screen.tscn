@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1kkcyq4uq2ab"]
+
+[ext_resource type="Script" path="res://Scenes/flash_start_screen.gd" id="1_36a3t"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c6270"]
+bg_color = Color(0.537255, 0.54902, 0.952941, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_sc7hx"]
+font_size = 128
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
+
+[node name="FlashStartScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_36a3t")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_c6270")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Flash Screen
+Loading..."
+label_settings = SubResource("LabelSettings_sc7hx")
+horizontal_alignment = 1
+vertical_alignment = 1

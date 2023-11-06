@@ -1,0 +1,124 @@
+[gd_scene load_steps=7 format=3 uid="uid://bnxnaeja6awdo"]
+
+[ext_resource type="Script" path="res://Scenes/MainTabs/subjects.gd" id="1_cxcq4"]
+[ext_resource type="PackedScene" uid="uid://drv0tr8oeph38" path="res://Scenes/UI Elements/faculty_container.tscn" id="2_be3gw"]
+[ext_resource type="PackedScene" uid="uid://n34laaa2usxv" path="res://Scenes/UI Elements/discipline_container.tscn" id="3_bk2tr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b02k7"]
+bg_color = Color(0.670588, 0.760784, 0.909804, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wt5ud"]
+bg_color = Color(0.313726, 0.611765, 0.937255, 1)
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_vjsid"]
+line_spacing = 15.0
+font_size = 60
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Subjects" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(0, 875)
+script = ExtResource("1_cxcq4")
+
+[node name="BackGroundPanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_b02k7")
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+offset_right = 1080.0
+offset_bottom = 80.0
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_wt5ud")
+
+[node name="TitleLabel" type="Label" parent="Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "My Subjects"
+label_settings = SubResource("LabelSettings_vjsid")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 85
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer"]
+layout_mode = 2
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_top = 20
+
+[node name="Faculties" type="VBoxContainer" parent="MarginContainer/ScrollContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="UMU_Course" type="VBoxContainer" parent="MarginContainer/ScrollContainer/MarginContainer/Faculties"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 15
+
+[node name="FacultyContainer" parent="MarginContainer/ScrollContainer/MarginContainer/Faculties/UMU_Course" instance=ExtResource("2_be3gw")]
+layout_mode = 2
+faculty_name = "УМУ"
+
+[node name="PhMIT" type="VBoxContainer" parent="MarginContainer/ScrollContainer/MarginContainer/Faculties"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 15
+
+[node name="FacultyContainer" parent="MarginContainer/ScrollContainer/MarginContainer/Faculties/PhMIT" instance=ExtResource("2_be3gw")]
+layout_mode = 2
+faculty_name = "Факультет математики и информационных технологий"
+
+[node name="DisciplineContainer" parent="MarginContainer/ScrollContainer/MarginContainer/Faculties/PhMIT" instance=ExtResource("3_bk2tr")]
+layout_mode = 2
+discipline_name = "Базы Данных"
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/ScrollContainer/MarginContainer/Faculties"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+download_chunk_size = 4096
+use_threads = true
+
+[connection signal="request_completed" from="HTTPRequest" to="." method="_on_http_request_request_completed"]

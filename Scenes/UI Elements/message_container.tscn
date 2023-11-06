@@ -1,0 +1,74 @@
+[gd_scene load_steps=6 format=3 uid="uid://ogd185vje7l6"]
+
+[ext_resource type="Script" path="res://Scenes/UI Elements/message_container.gd" id="1_b2udc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bq4wb"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_3leld"]
+font_size = 36
+font_color = Color(0.0235294, 0.564706, 0.847059, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_8m0vb"]
+font_size = 24
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_tlq6m"]
+font_color = Color(0.278431, 0.478431, 0.992157, 1)
+
+[node name="MessageContainer" type="PanelContainer"]
+size_flags_horizontal = 3
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_bq4wb")
+script = ExtResource("1_b2udc")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 15
+
+[node name="NameLabel" type="Label" parent="VBoxContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Name placeholderfgr"
+label_settings = SubResource("LabelSettings_3leld")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_right = 15
+
+[node name="MessageLabel" type="Label" parent="VBoxContainer/MarginContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vitae erat sed quam imperdiet porta non vel mauris. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vitae erat sed quam imperdiet porta non vel mauris. Donec dictum lorem imperdiet, pharetra metus id, feugiat sem. Phasellus dictum leo eros, eget lacinia eros varius sed. Vestibulum bibendum tincidunt tincidunt. Integer vitae vehicula dui."
+label_settings = SubResource("LabelSettings_8m0vb")
+autowrap_mode = 2
+
+[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_right = 35
+theme_override_constants/margin_bottom = 10
+
+[node name="TimeLabel" type="Label" parent="VBoxContainer/MarginContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = "12:15"
+label_settings = SubResource("LabelSettings_tlq6m")

@@ -1,0 +1,605 @@
+[gd_scene load_steps=10 format=3 uid="uid://dvcfgct4hiex2"]
+
+[ext_resource type="Script" path="res://Scenes/time_table.gd" id="1_iob2m"]
+[ext_resource type="StyleBox" uid="uid://c2a3v34y7va34" path="res://Styles/white button.tres" id="2_5pats"]
+[ext_resource type="Script" path="res://addons/collapsible_container/collapsible_elements/collapsible_container.gd" id="2_57uy4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jaxvv"]
+bg_color = Color(0.670588, 0.760784, 0.909804, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dkg5t"]
+bg_color = Color(0.313726, 0.611765, 0.937255, 1)
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_rx5fs"]
+line_spacing = 15.0
+font_size = 60
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pt4bh"]
+bg_color = Color(0.870588, 0.462745, 0.466667, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_eui6y"]
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="GDScript" id="GDScript_8p086"]
+script/source = "extends Button
+@onready var collapsible_container: Control = $\"../CollapsibleContainer\"
+
+
+func _on_pressed() -> void:
+	collapsible_container.open_tween_toggle()
+"
+
+[node name="TimeTable" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_iob2m")
+
+[node name="BackGroundPanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jaxvv")
+
+[node name="Vbox" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="Header" type="PanelContainer" parent="Vbox"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_dkg5t")
+
+[node name="DiscNameLabel" type="Label" parent="Vbox/Header"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Timetable"
+label_settings = SubResource("LabelSettings_rx5fs")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Vbox"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
+
+[node name="Items" type="VBoxContainer" parent="Vbox/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 15
+
+[node name="ScrollContainer2" type="ScrollContainer" parent="Vbox/ScrollContainer/Items"]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
+
+[node name="Events" type="HBoxContainer" parent="Vbox/ScrollContainer/Items/ScrollContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 15
+
+[node name="PanelContainer" type="PanelContainer" parent="Vbox/ScrollContainer/Items/ScrollContainer2/Events"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_pt4bh")
+
+[node name="MarginContainer" type="MarginContainer" parent="Vbox/ScrollContainer/Items/ScrollContainer2/Events/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 15
+
+[node name="Label" type="Label" parent="Vbox/ScrollContainer/Items/ScrollContainer2/Events/PanelContainer/MarginContainer"]
+layout_mode = 2
+text = "grffewfewfew
+
+grgrg
+grggrr
+rggrr"
+label_settings = SubResource("LabelSettings_eui6y")
+
+[node name="PanelContainer2" type="PanelContainer" parent="Vbox/ScrollContainer/Items/ScrollContainer2/Events"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_pt4bh")
+
+[node name="MarginContainer" type="MarginContainer" parent="Vbox/ScrollContainer/Items/ScrollContainer2/Events/PanelContainer2"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 15
+
+[node name="Label" type="Label" parent="Vbox/ScrollContainer/Items/ScrollContainer2/Events/PanelContainer2/MarginContainer"]
+layout_mode = 2
+text = "grffewfewfew
+
+grgrg
+grggrr
+rggrr"
+label_settings = SubResource("LabelSettings_eui6y")
+
+[node name="PanelContainer3" type="PanelContainer" parent="Vbox/ScrollContainer/Items/ScrollContainer2/Events"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_pt4bh")
+
+[node name="MarginContainer" type="MarginContainer" parent="Vbox/ScrollContainer/Items/ScrollContainer2/Events/PanelContainer3"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 15
+
+[node name="Label" type="Label" parent="Vbox/ScrollContainer/Items/ScrollContainer2/Events/PanelContainer3/MarginContainer"]
+layout_mode = 2
+text = "grffewfewfew
+
+grgrg
+grggrr
+rggrr"
+label_settings = SubResource("LabelSettings_eui6y")
+
+[node name="PanelContainer4" type="PanelContainer" parent="Vbox/ScrollContainer/Items/ScrollContainer2/Events"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_pt4bh")
+
+[node name="MarginContainer" type="MarginContainer" parent="Vbox/ScrollContainer/Items/ScrollContainer2/Events/PanelContainer4"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 15
+
+[node name="Label" type="Label" parent="Vbox/ScrollContainer/Items/ScrollContainer2/Events/PanelContainer4/MarginContainer"]
+layout_mode = 2
+text = "grffewfewfew
+
+grgrg
+grggrr
+rggrr"
+label_settings = SubResource("LabelSettings_eui6y")
+
+[node name="PanelContainer5" type="PanelContainer" parent="Vbox/ScrollContainer/Items/ScrollContainer2/Events"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_pt4bh")
+
+[node name="MarginContainer" type="MarginContainer" parent="Vbox/ScrollContainer/Items/ScrollContainer2/Events/PanelContainer5"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 15
+
+[node name="Label" type="Label" parent="Vbox/ScrollContainer/Items/ScrollContainer2/Events/PanelContainer5/MarginContainer"]
+layout_mode = 2
+text = "grffewfewfew
+
+grgrg
+grggrr
+rggrr"
+label_settings = SubResource("LabelSettings_eui6y")
+
+[node name="PanelContainer6" type="PanelContainer" parent="Vbox/ScrollContainer/Items/ScrollContainer2/Events"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_pt4bh")
+
+[node name="MarginContainer" type="MarginContainer" parent="Vbox/ScrollContainer/Items/ScrollContainer2/Events/PanelContainer6"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 15
+
+[node name="Label" type="Label" parent="Vbox/ScrollContainer/Items/ScrollContainer2/Events/PanelContainer6/MarginContainer"]
+layout_mode = 2
+text = "grffewfewfew
+
+grgrg
+grggrr
+rggrr"
+label_settings = SubResource("LabelSettings_eui6y")
+
+[node name="PanelContainer7" type="PanelContainer" parent="Vbox/ScrollContainer/Items/ScrollContainer2/Events"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_pt4bh")
+
+[node name="MarginContainer" type="MarginContainer" parent="Vbox/ScrollContainer/Items/ScrollContainer2/Events/PanelContainer7"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 15
+
+[node name="Label" type="Label" parent="Vbox/ScrollContainer/Items/ScrollContainer2/Events/PanelContainer7/MarginContainer"]
+layout_mode = 2
+text = "grffewfewfew
+
+grgrg
+grggrr
+rggrr"
+label_settings = SubResource("LabelSettings_eui6y")
+
+[node name="Calendar" type="Control" parent="Vbox/ScrollContainer/Items"]
+custom_minimum_size = Vector2(0, 500)
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="Vbox/ScrollContainer/Items/Calendar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.5313
+offset_top = -15.5
+offset_right = 33.5313
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_colors/font_placeholder_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+placeholder_text = "Введите дату: yyyy-mm-dd"
+expand_to_text_length = true
+context_menu_enabled = false
+flat = true
+
+[node name="Button" type="Button" parent="Vbox/ScrollContainer/Items/Calendar"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.872
+anchor_right = 0.5
+anchor_bottom = 0.872
+offset_left = -50.0
+offset_top = -100.0
+offset_right = 50.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 32
+text = "Нажать"
+
+[node name="TimeTableVBox" type="VBoxContainer" parent="Vbox/ScrollContainer/Items"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 15
+
+[node name="GroupContainer" type="MarginContainer" parent="Vbox/ScrollContainer/Items/TimeTableVBox"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_right = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Vbox/ScrollContainer/Items/TimeTableVBox/GroupContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Button" type="Button" parent="Vbox/ScrollContainer/Items/TimeTableVBox/GroupContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("2_5pats")
+theme_override_styles/hover = ExtResource("2_5pats")
+theme_override_styles/pressed = ExtResource("2_5pats")
+theme_override_styles/disabled = ExtResource("2_5pats")
+theme_override_styles/focus = ExtResource("2_5pats")
+toggle_mode = true
+text = "УМУ (группа 105) placeholder"
+alignment = 0
+script = SubResource("GDScript_8p086")
+
+[node name="CollapsibleContainer" type="Control" parent="Vbox/ScrollContainer/Items/TimeTableVBox/GroupContainer/VBoxContainer"]
+process_mode = 3
+editor_description = "
+			A custom/plugin Control node capable of hiding and revealing its children by folding and unfolding.
+			
+Give feedback at: https://github.com/ArshvirGoraya/Godot-Collapsible-Container"
+clip_contents = true
+custom_minimum_size = Vector2(1030, 555)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+mouse_filter = 1
+script = ExtResource("2_57uy4")
+starts_opened = false
+folding_direction_preset = 10
+sizing_constraint = 1
+sizing_node = NodePath("Classes")
+_preview_auto_update_size = 1
+
+[node name="Classes" type="VBoxContainer" parent="Vbox/ScrollContainer/Items/TimeTableVBox/GroupContainer/VBoxContainer/CollapsibleContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="PanelContainer" type="PanelContainer" parent="Vbox/ScrollContainer/Items/TimeTableVBox/GroupContainer/VBoxContainer/CollapsibleContainer/Classes"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_pt4bh")
+
+[node name="MarginContainer" type="MarginContainer" parent="Vbox/ScrollContainer/Items/TimeTableVBox/GroupContainer/VBoxContainer/CollapsibleContainer/Classes/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 15
+
+[node name="Label" type="Label" parent="Vbox/ScrollContainer/Items/TimeTableVBox/GroupContainer/VBoxContainer/CollapsibleContainer/Classes/PanelContainer/MarginContainer"]
+layout_mode = 2
+text = "grffewfewfew
+
+grgrg
+grggrr
+rggrr"
+label_settings = SubResource("LabelSettings_eui6y")
+
+[node name="PanelContainer2" type="PanelContainer" parent="Vbox/ScrollContainer/Items/TimeTableVBox/GroupContainer/VBoxContainer/CollapsibleContainer/Classes"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_pt4bh")
+
+[node name="MarginContainer" type="MarginContainer" parent="Vbox/ScrollContainer/Items/TimeTableVBox/GroupContainer/VBoxContainer/CollapsibleContainer/Classes/PanelContainer2"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 15
+
+[node name="Label" type="Label" parent="Vbox/ScrollContainer/Items/TimeTableVBox/GroupContainer/VBoxContainer/CollapsibleContainer/Classes/PanelContainer2/MarginContainer"]
+layout_mode = 2
+text = "grffewfewfew
+
+grgrg
+grggrr
+rggrr"
+label_settings = SubResource("LabelSettings_eui6y")
+
+[node name="GroupContainer2" type="MarginContainer" parent="Vbox/ScrollContainer/Items/TimeTableVBox"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_right = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Vbox/ScrollContainer/Items/TimeTableVBox/GroupContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Button" type="Button" parent="Vbox/ScrollContainer/Items/TimeTableVBox/GroupContainer2/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("2_5pats")
+theme_override_styles/hover = ExtResource("2_5pats")
+theme_override_styles/pressed = ExtResource("2_5pats")
+theme_override_styles/disabled = ExtResource("2_5pats")
+theme_override_styles/focus = ExtResource("2_5pats")
+toggle_mode = true
+text = "УМУ (группа 105) placeholder"
+alignment = 0
+script = SubResource("GDScript_8p086")
+
+[node name="CollapsibleContainer" type="Control" parent="Vbox/ScrollContainer/Items/TimeTableVBox/GroupContainer2/VBoxContainer"]
+process_mode = 3
+editor_description = "
+			A custom/plugin Control node capable of hiding and revealing its children by folding and unfolding.
+			
+Give feedback at: https://github.com/ArshvirGoraya/Godot-Collapsible-Container"
+clip_contents = true
+custom_minimum_size = Vector2(1030, 555)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+mouse_filter = 1
+script = ExtResource("2_57uy4")
+starts_opened = false
+folding_direction_preset = 10
+sizing_constraint = 1
+sizing_node = NodePath("Classes")
+_preview_auto_update_size = 1
+
+[node name="Classes" type="VBoxContainer" parent="Vbox/ScrollContainer/Items/TimeTableVBox/GroupContainer2/VBoxContainer/CollapsibleContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="PanelContainer" type="PanelContainer" parent="Vbox/ScrollContainer/Items/TimeTableVBox/GroupContainer2/VBoxContainer/CollapsibleContainer/Classes"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_pt4bh")
+
+[node name="MarginContainer" type="MarginContainer" parent="Vbox/ScrollContainer/Items/TimeTableVBox/GroupContainer2/VBoxContainer/CollapsibleContainer/Classes/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 15
+
+[node name="Label" type="Label" parent="Vbox/ScrollContainer/Items/TimeTableVBox/GroupContainer2/VBoxContainer/CollapsibleContainer/Classes/PanelContainer/MarginContainer"]
+layout_mode = 2
+text = "grffewfewfew
+
+grgrg
+grggrr
+rggrr"
+label_settings = SubResource("LabelSettings_eui6y")
+
+[node name="PanelContainer2" type="PanelContainer" parent="Vbox/ScrollContainer/Items/TimeTableVBox/GroupContainer2/VBoxContainer/CollapsibleContainer/Classes"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_pt4bh")
+
+[node name="MarginContainer" type="MarginContainer" parent="Vbox/ScrollContainer/Items/TimeTableVBox/GroupContainer2/VBoxContainer/CollapsibleContainer/Classes/PanelContainer2"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 15
+
+[node name="Label" type="Label" parent="Vbox/ScrollContainer/Items/TimeTableVBox/GroupContainer2/VBoxContainer/CollapsibleContainer/Classes/PanelContainer2/MarginContainer"]
+layout_mode = 2
+text = "grffewfewfew
+
+grgrg
+grggrr
+rggrr"
+label_settings = SubResource("LabelSettings_eui6y")
+
+[node name="GroupContainer3" type="MarginContainer" parent="Vbox/ScrollContainer/Items/TimeTableVBox"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_right = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Vbox/ScrollContainer/Items/TimeTableVBox/GroupContainer3"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Button" type="Button" parent="Vbox/ScrollContainer/Items/TimeTableVBox/GroupContainer3/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("2_5pats")
+theme_override_styles/hover = ExtResource("2_5pats")
+theme_override_styles/pressed = ExtResource("2_5pats")
+theme_override_styles/disabled = ExtResource("2_5pats")
+theme_override_styles/focus = ExtResource("2_5pats")
+toggle_mode = true
+text = "УМУ (группа 105) placeholder"
+alignment = 0
+script = SubResource("GDScript_8p086")
+
+[node name="CollapsibleContainer" type="Control" parent="Vbox/ScrollContainer/Items/TimeTableVBox/GroupContainer3/VBoxContainer"]
+process_mode = 3
+editor_description = "
+			A custom/plugin Control node capable of hiding and revealing its children by folding and unfolding.
+			
+Give feedback at: https://github.com/ArshvirGoraya/Godot-Collapsible-Container"
+clip_contents = true
+custom_minimum_size = Vector2(1030, 555)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+mouse_filter = 1
+script = ExtResource("2_57uy4")
+starts_opened = false
+folding_direction_preset = 10
+sizing_constraint = 1
+sizing_node = NodePath("Classes")
+_preview_auto_update_size = 1
+
+[node name="Classes" type="VBoxContainer" parent="Vbox/ScrollContainer/Items/TimeTableVBox/GroupContainer3/VBoxContainer/CollapsibleContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="PanelContainer" type="PanelContainer" parent="Vbox/ScrollContainer/Items/TimeTableVBox/GroupContainer3/VBoxContainer/CollapsibleContainer/Classes"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_pt4bh")
+
+[node name="MarginContainer" type="MarginContainer" parent="Vbox/ScrollContainer/Items/TimeTableVBox/GroupContainer3/VBoxContainer/CollapsibleContainer/Classes/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 15
+
+[node name="Label" type="Label" parent="Vbox/ScrollContainer/Items/TimeTableVBox/GroupContainer3/VBoxContainer/CollapsibleContainer/Classes/PanelContainer/MarginContainer"]
+layout_mode = 2
+text = "grffewfewfew
+
+grgrg
+grggrr
+rggrr"
+label_settings = SubResource("LabelSettings_eui6y")
+
+[node name="PanelContainer2" type="PanelContainer" parent="Vbox/ScrollContainer/Items/TimeTableVBox/GroupContainer3/VBoxContainer/CollapsibleContainer/Classes"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_pt4bh")
+
+[node name="MarginContainer" type="MarginContainer" parent="Vbox/ScrollContainer/Items/TimeTableVBox/GroupContainer3/VBoxContainer/CollapsibleContainer/Classes/PanelContainer2"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 15
+
+[node name="Label" type="Label" parent="Vbox/ScrollContainer/Items/TimeTableVBox/GroupContainer3/VBoxContainer/CollapsibleContainer/Classes/PanelContainer2/MarginContainer"]
+layout_mode = 2
+text = "grffewfewfew
+
+grgrg
+grggrr
+rggrr"
+label_settings = SubResource("LabelSettings_eui6y")
+
+[connection signal="pressed" from="Vbox/ScrollContainer/Items/Calendar/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Vbox/ScrollContainer/Items/TimeTableVBox/GroupContainer/VBoxContainer/Button" to="Vbox/ScrollContainer/Items/TimeTableVBox/GroupContainer/VBoxContainer/Button" method="_on_pressed"]
+[connection signal="pressed" from="Vbox/ScrollContainer/Items/TimeTableVBox/GroupContainer2/VBoxContainer/Button" to="Vbox/ScrollContainer/Items/TimeTableVBox/GroupContainer2/VBoxContainer/Button" method="_on_pressed"]
+[connection signal="pressed" from="Vbox/ScrollContainer/Items/TimeTableVBox/GroupContainer3/VBoxContainer/Button" to="Vbox/ScrollContainer/Items/TimeTableVBox/GroupContainer3/VBoxContainer/Button" method="_on_pressed"]
