@@ -10,7 +10,7 @@ var data : Dictionary
 func _ready() -> void:
 	disc_name_label.text = Globals.current_disc_name
 	
-	data = await Globals.get_discipline_rating()
+	data = await DisciplineService.get_discipline_rating()
 	
 	parse_data()
 

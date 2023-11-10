@@ -7,17 +7,15 @@ extends Control
 @onready var faculty_name_container = preload("res://Scenes/UI Elements/faculty_container.tscn")
 @onready var discipline_container = preload("res://Scenes/UI Elements/discipline_container.tscn")
 
-var redirect_target : Globals.RedirectTarget
-
 func _ready() -> void:
 	if !visible:
 		return
 	if Globals.token_data == null:
 		return
-	match redirect_target:
-		Globals.RedirectTarget.Communication:
+	match Globals.redirect_from:
+		Globals.RedirectFrom.Communication:
 			title_label.text = "Communication"
-		Globals.RedirectTarget.Discipline:
+		Globals.RedirectFrom.Discipline:
 			title_label.text = "My Subjects"
 	var _error = http_request.request(Globals.base_url+"v1/StudentSemester?selector=current", Globals.get_auth_header(), HTTPClient.METHOD_GET, "")
 
@@ -41,6 +39,6 @@ func _on_http_request_request_completed(_result: int, _response_code: int, _head
 			var disc = discipline_container.instantiate()
 			disc.discipline_name = discipline["Title"]
 			disc.discipline_id = discipline["Id"]
-			disc.redirect = redirect_target
+			disc.redirect = Globals.redirect_from
 			faculty_container.add_child(disc)
 

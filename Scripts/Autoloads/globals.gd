@@ -1,11 +1,11 @@
 extends Node
-enum RedirectTarget {
+enum RedirectFrom {
+	Profile,
 	Discipline,
-	Communication
+	Communication,
+	Timetable,
+	Settings
 }
-
-signal discipline_rating_recieved
-#signal time_table_recieved
 
 var base_url : String = "https://papi.mrsu.ru/"
 var token_data : TokenData :
@@ -17,19 +17,14 @@ var token_data : TokenData :
 		return token_data
 var key : String = "gjlbweg;vwevilwvwe".sha256_text()
 
-var discipline_rating_http_request : HTTPRequest
-
 # used for communication and discipline_rating
 var current_disc_name:String
 var current_disc_id:int
 
-# for discipline_rating scene
-var discipline_rating : Dictionary
+var redirect_from : RedirectFrom = RedirectFrom.Profile
 
 func _ready() -> void:
-	discipline_rating_http_request = HTTPRequest.new()
-	init_http_request(self, discipline_rating_http_request, self._discipline_rating_http_request_completed)
-	
+	pass
 
 func get_token_from_disk(path:String = "user://token.data") -> Error:
 	#if ResourceLoader.exists(path):
@@ -74,16 +69,3 @@ func get_yy_mm_dd_from_date(date : String) -> String:
 
 func get_auth_header():
 	return ["Authorization: Bearer " + Globals.token_data.access_token]
-	
-func get_discipline_rating(discipline_id : int = current_disc_id) -> Dictionary:
-	discipline_rating_http_request.request(base_url + "v2/StudentRatingPlan/" + str(discipline_id),
-		Globals.get_auth_header(),
-		HTTPClient.METHOD_GET)
-	
-	await discipline_rating_recieved
-	return discipline_rating
-
-func _discipline_rating_http_request_completed(_result, _response_code, _headers, body) -> void:
-	var response = JSON.parse_string(body.get_string_from_utf8())
-	discipline_rating = response
-	discipline_rating_recieved.emit()
