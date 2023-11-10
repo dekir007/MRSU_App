@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://djc8wpql5uhfu"]
+[gd_scene load_steps=2 format=3 uid="uid://djc8wpql5uhfu"]
+
+[ext_resource type="Script" path="res://Scenes/UI Elements/AuxiliaryElements/rich_text_label.gd" id="1_pn18r"]
 
 [node name="RichTextLabel" type="RichTextLabel"]
 theme_override_colors/default_color = Color(0, 0, 0, 1)
@@ -6,3 +8,6 @@ theme_override_font_sizes/normal_font_size = 24
 theme_override_font_sizes/bold_font_size = 24
 bbcode_enabled = true
 fit_content = true
+script = ExtResource("1_pn18r")
+
+[connection signal="meta_clicked" from="." to="." method="_on_meta_clicked"]
