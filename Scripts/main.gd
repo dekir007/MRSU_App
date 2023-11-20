@@ -3,8 +3,8 @@ extends VBoxContainer
 @onready var profile : PackedScene = preload("res://Scenes/MainTabs/profile.tscn")
 @onready var subjects : PackedScene = preload("res://Scenes/MainTabs/subjects.tscn")
 @onready var time_table : PackedScene = preload("res://Scenes/time_table.tscn")
-@onready var main: Control = %MainControl
 
+@onready var main: Control = %MainControl
 @onready var profile_button: TextureButton = $Control2/Footer/HBoxContainer/ProfileButton
 @onready var subjects_button: TextureButton = $Control2/Footer/HBoxContainer/SubjectsButton
 @onready var communication_button: TextureButton = $Control2/Footer/HBoxContainer/CommunicationButton
@@ -17,14 +17,17 @@ var current_tab_id : Globals.RedirectFrom
 func _ready() -> void:
 	match Globals.redirect_from:
 		Globals.RedirectFrom.Profile:
-			current_tab_id = -1
+			current_tab_id = Globals.RedirectFrom.None
 			change_tabs(profile, Globals.RedirectFrom.Profile)
 		Globals.RedirectFrom.Communication:
-			current_tab_id = 0 # TODO
+			current_tab_id = Globals.RedirectFrom.None
 			change_tabs(subjects, Globals.RedirectFrom.Communication)
 		Globals.RedirectFrom.Discipline:
-			current_tab_id = 0 # TODO
+			current_tab_id = Globals.RedirectFrom.None
 			change_tabs(subjects, Globals.RedirectFrom.Discipline)
+		Globals.RedirectFrom.Timetable:
+			current_tab_id = Globals.RedirectFrom.None
+			change_tabs(time_table, Globals.RedirectFrom.Timetable)
 		
 
 func _on_profile_button_pressed():

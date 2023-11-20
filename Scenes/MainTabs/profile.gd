@@ -12,4 +12,4 @@ func _ready() -> void:
 	
 	id_label.text = "ID: " + response["StudentCod"] 
 	
-	photo.texture = await ProfileService.get_photo()
+	photo.texture = await PhotoService.get_photo(response["Photo"]["UrlSource"])

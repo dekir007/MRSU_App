@@ -25,6 +25,7 @@ TimetableService="*res://Scripts/Autoloads/timetable_service.gd"
 ProfileService="*res://Scripts/Autoloads/profile_service.gd"
 CommunicationService="*res://Scripts/Autoloads/communication_service.gd"
 DisciplineService="*res://Scripts/Autoloads/discipline_service.gd"
+PhotoService="*res://Scripts/Autoloads/photo_service.gd"
 
 [display]
 
@@ -38,6 +39,10 @@ window/handheld/orientation=1
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/collapsible_container/plugin.cfg")
+
+[gui]
+
+theme/custom_font="res://Assets/fonts/Roboto-Regular.ttf"
 
 [input_devices]
 

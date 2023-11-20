@@ -1,5 +1,7 @@
 extends Node
+
 enum RedirectFrom {
+	None = -1,
 	Profile,
 	Discipline,
 	Communication,
@@ -11,9 +13,8 @@ var base_url : String = "https://papi.mrsu.ru/"
 var token_data : TokenData :
 	get:
 		if token_data == null:
-			push_error("NO AUTH TOKEN")
-			# AuthService.auth(...)
-			# await AuthService.token_recieved
+			if await Globals.get_token_from_disk() != OK:
+				push_error("NO AUTH TOKEN")
 		return token_data
 var key : String = "gjlbweg;vwevilwvwe".sha256_text()
 

@@ -1,0 +1,75 @@
+[gd_scene load_steps=7 format=3 uid="uid://jen10kfkmcbe"]
+
+[ext_resource type="Script" path="res://Scenes/UI Elements/group_container.gd" id="1_oaei3"]
+[ext_resource type="StyleBox" uid="uid://c2a3v34y7va34" path="res://Styles/white button.tres" id="1_wdf1j"]
+[ext_resource type="Script" path="res://addons/collapsible_container/collapsible_elements/collapsible_container.gd" id="2_0xjaa"]
+[ext_resource type="PackedScene" uid="uid://bv8lxo5wvmddo" path="res://Scenes/UI Elements/lesson_container.tscn" id="4_c0gcr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lg4yl"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_liput"]
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+
+[node name="GroupContainer" type="VBoxContainer"]
+offset_right = 50.0
+offset_bottom = 45.0
+size_flags_horizontal = 3
+theme_override_constants/separation = 15
+script = ExtResource("1_oaei3")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("1_wdf1j")
+
+[node name="Button" type="Button" parent="PanelContainer"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 26
+theme_override_styles/focus = SubResource("StyleBoxEmpty_lg4yl")
+toggle_mode = true
+flat = true
+alignment = 0
+
+[node name="Label" type="Label" parent="PanelContainer"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_liput")
+autowrap_mode = 3
+
+[node name="CollapsibleContainer" type="Control" parent="."]
+process_mode = 3
+editor_description = "
+			A custom/plugin Control node capable of hiding and revealing its children by folding and unfolding.
+			
+Give feedback at: https://github.com/ArshvirGoraya/Godot-Collapsible-Container"
+clip_contents = true
+custom_minimum_size = Vector2(58, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+script = ExtResource("2_0xjaa")
+folding_direction_preset = 10
+sizing_constraint = 1
+sizing_node = NodePath("Lessons")
+custom_open_size = Vector2(1100, 182)
+_preview_auto_update_size = 1
+
+[node name="Lessons" type="VBoxContainer" parent="CollapsibleContainer"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="LessonContainer" parent="CollapsibleContainer/Lessons" instance=ExtResource("4_c0gcr")]
+visible = false
+layout_mode = 2
+
+[connection signal="pressed" from="PanelContainer/Button" to="." method="_on_button_pressed"]

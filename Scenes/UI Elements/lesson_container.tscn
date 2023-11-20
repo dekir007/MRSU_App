@@ -1,0 +1,75 @@
+[gd_scene load_steps=9 format=3 uid="uid://bv8lxo5wvmddo"]
+
+[ext_resource type="Shader" path="res://Shaders/rect_to_circle.gdshader" id="1_lfo2m"]
+[ext_resource type="Script" path="res://Scenes/UI Elements/lesson_container.gd" id="1_sbykj"]
+[ext_resource type="Texture2D" uid="uid://edg8o3dtmpkt" path="res://Assets/noavatar.png" id="2_w4sty"]
+[ext_resource type="FontFile" uid="uid://ctcpki845i3b5" path="res://Assets/fonts/Roboto-Regular.ttf" id="4_tu5uk"]
+[ext_resource type="FontFile" uid="uid://bja1eudwvq6w6" path="res://Assets/fonts/Roboto-Bold.ttf" id="5_dxl60"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7jo0k"]
+content_margin_left = 25.0
+content_margin_top = 15.0
+content_margin_right = 25.0
+content_margin_bottom = 15.0
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_eui6y"]
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dedfp"]
+shader = ExtResource("1_lfo2m")
+shader_parameter/border_color = Color(1, 1, 1, 1)
+
+[node name="LessonContainer" type="PanelContainer"]
+offset_right = 900.0
+offset_bottom = 182.0
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_7jo0k")
+script = ExtResource("1_sbykj")
+lesson_info = "3. 10:10 - 11:40 211 (к.1)"
+teacher = "Донич"
+discipline_name = "Правоведение"
+photo = ExtResource("2_w4sty")
+disc_id = 1294564
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="LessonInfo" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "3. 10:10 - 11:40 211 (к.1)"
+label_settings = SubResource("LabelSettings_eui6y")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="PhotoRect" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+material = SubResource("ShaderMaterial_dedfp")
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+texture = ExtResource("2_w4sty")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="LessonNameAndTeacher" type="RichTextLabel" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_filter = 1
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("4_tu5uk")
+theme_override_fonts/bold_font = ExtResource("5_dxl60")
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 32
+bbcode_enabled = true
+text = "[b]Правоведение[/b]
+Донич"
+fit_content = true
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

@@ -19,7 +19,9 @@ func get_time_table(date : String = Time.get_datetime_string_from_system().left(
 	await time_table_recieved
 	return time_table
 
-func _time_table_http_request_completed(_result, _response_code, _headers, body) -> void:
+func _time_table_http_request_completed(result, response_code, _headers, body) -> void:
+	if result != 0 or response_code != 200: 
+		return
 	var response = JSON.parse_string(body.get_string_from_utf8())
 	time_table = response
 	time_table_recieved.emit()
