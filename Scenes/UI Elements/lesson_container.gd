@@ -21,6 +21,7 @@ func _ready() -> void:
 
 func _on_gui_input(event: InputEvent) -> void:
 	if event is InputEventScreenTouch and event.is_pressed():
+		#print("left" if event.position.x < global_position.x + size.x/2 else "right")
 		Globals.current_disc_id = disc_id
 		Globals.current_disc_name = discipline_name
 		Globals.redirect_from = Globals.RedirectFrom.Timetable

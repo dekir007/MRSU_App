@@ -1,7 +1,6 @@
-[gd_scene load_steps=19 format=3 uid="uid://dhvp6exd86wg3"]
+[gd_scene load_steps=18 format=3 uid="uid://dhvp6exd86wg3"]
 
 [ext_resource type="Script" path="res://Scripts/communication.gd" id="1_ac0ir"]
-[ext_resource type="Texture2D" uid="uid://14omwy1wyjlh" path="res://Assets/home.png" id="2_10f03"]
 [ext_resource type="Texture2D" uid="uid://b32wqksaivuqa" path="res://Assets/paper-plane.png" id="3_am0mu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i67ks"]
@@ -14,7 +13,7 @@ corner_radius_bottom_left = 50
 
 [sub_resource type="LabelSettings" id="LabelSettings_y8n3i"]
 line_spacing = 15.0
-font_size = 60
+font_size = 80
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 
@@ -27,7 +26,7 @@ corner_radius_bottom_left = 50
 
 [sub_resource type="LabelSettings" id="LabelSettings_0nh3t"]
 line_spacing = 0.0
-font_size = 60
+font_size = 70
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 
@@ -114,10 +113,9 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_i67ks")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+layout_mode = 2
+offset_right = 1080.0
+offset_bottom = 430.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 15
@@ -133,21 +131,6 @@ layout_mode = 2
 text = "Communication"
 label_settings = SubResource("LabelSettings_y8n3i")
 horizontal_alignment = 1
-
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Header"]
-layout_mode = 2
-theme_override_constants/margin_left = 25
-theme_override_constants/margin_top = 15
-theme_override_constants/margin_bottom = 15
-
-[node name="ReturnBtn" type="TextureButton" parent="VBoxContainer/Header/MarginContainer"]
-custom_minimum_size = Vector2(64, 0)
-layout_mode = 2
-size_flags_horizontal = 0
-toggle_mode = true
-texture_normal = ExtResource("2_10f03")
-ignore_texture_size = true
-stretch_mode = 4
 
 [node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -214,6 +197,7 @@ layout_mode = 2
 theme = SubResource("Theme_bk5e3")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_placeholder_color = Color(0, 0, 0, 1)
+theme_override_colors/caret_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 36
 theme_override_styles/normal = SubResource("StyleBoxEmpty_lutm3")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_6g31v")
@@ -242,5 +226,6 @@ texture_normal = ExtResource("3_am0mu")
 ignore_texture_size = true
 stretch_mode = 5
 
-[connection signal="pressed" from="VBoxContainer/Header/MarginContainer/ReturnBtn" to="." method="_on_return_btn_pressed"]
+[connection signal="focus_entered" from="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/TextMessageEdit" to="." method="_on_text_message_edit_focus_entered"]
+[connection signal="focus_exited" from="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/TextMessageEdit" to="." method="_on_text_message_edit_focus_exited"]
 [connection signal="pressed" from="VBoxContainer/MarginContainer/PanelContainer/MarginContainer2/SendBtn" to="." method="_on_send_btn_pressed"]

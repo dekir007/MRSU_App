@@ -19,7 +19,9 @@ func _ready() -> void:
 			title_label.text = "My Subjects"
 	var _error = http_request.request(Globals.base_url+"v1/StudentSemester?selector=current", Globals.get_auth_header(), HTTPClient.METHOD_GET, "")
 
-func _on_http_request_request_completed(_result: int, _response_code: int, _headers: PackedStringArray, body: PackedByteArray) -> void:
+func _on_http_request_request_completed(_result: int, response_code: int, _headers: PackedStringArray, body: PackedByteArray) -> void:
+	if response_code !=  200:
+		return
 	var response = JSON.parse_string(body.get_string_from_utf8())
 	for faculty in response["RecordBooks"]:
 		print("\nfaculty: ", faculty["Faculty"] + "\n")

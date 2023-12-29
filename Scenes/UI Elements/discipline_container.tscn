@@ -4,7 +4,7 @@
 [ext_resource type="StyleBox" uid="uid://c2a3v34y7va34" path="res://Styles/white button.tres" id="1_l13fs"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_yql2c"]
-font_size = 50
+font_size = 70
 font_color = Color(0, 0, 0, 1)
 
 [node name="DisciplineContainer" type="MarginContainer"]

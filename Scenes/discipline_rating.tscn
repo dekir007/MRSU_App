@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://b5aqmj6gfkoj7"]
+[gd_scene load_steps=5 format=3 uid="uid://b5aqmj6gfkoj7"]
 
 [ext_resource type="Script" path="res://Scripts/discipline_rating.gd" id="1_gtu73"]
-[ext_resource type="Texture2D" uid="uid://14omwy1wyjlh" path="res://Assets/home.png" id="2_ago7o"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e6c3l"]
 bg_color = Color(0.670588, 0.760784, 0.909804, 1)
@@ -13,7 +12,7 @@ corner_radius_bottom_left = 50
 
 [sub_resource type="LabelSettings" id="LabelSettings_da3ca"]
 line_spacing = 15.0
-font_size = 60
+font_size = 80
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 
@@ -53,25 +52,11 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_7rk4j")
 [node name="DiscNameLabel" type="Label" parent="Vbox/Header"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
 text = "Discipline name placeholder"
 label_settings = SubResource("LabelSettings_da3ca")
 horizontal_alignment = 1
 autowrap_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="Vbox/Header"]
-layout_mode = 2
-theme_override_constants/margin_left = 25
-theme_override_constants/margin_top = 15
-theme_override_constants/margin_bottom = 15
-
-[node name="ReturnBtn" type="TextureButton" parent="Vbox/Header/MarginContainer"]
-custom_minimum_size = Vector2(64, 0)
-layout_mode = 2
-size_flags_horizontal = 0
-toggle_mode = true
-texture_normal = ExtResource("2_ago7o")
-ignore_texture_size = true
-stretch_mode = 4
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Vbox"]
 layout_mode = 2
@@ -85,5 +70,3 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 15
-
-[connection signal="pressed" from="Vbox/Header/MarginContainer/ReturnBtn" to="." method="_on_return_btn_pressed"]

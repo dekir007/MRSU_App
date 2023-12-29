@@ -8,7 +8,7 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lg4yl"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_liput"]
-font_size = 32
+font_size = 48
 font_color = Color(0, 0, 0, 1)
 
 [node name="GroupContainer" type="VBoxContainer"]
@@ -67,6 +67,7 @@ layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 grow_horizontal = 2
+theme_override_constants/separation = 25
 
 [node name="LessonContainer" parent="CollapsibleContainer/Lessons" instance=ExtResource("4_c0gcr")]
 visible = false

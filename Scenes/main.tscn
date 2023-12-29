@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://87h5xobgdvim"]
+[gd_scene load_steps=14 format=3 uid="uid://87h5xobgdvim"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_ghlfg"]
 [ext_resource type="Texture2D" uid="uid://14omwy1wyjlh" path="res://Assets/home.png" id="2_as4mo"]
 [ext_resource type="Texture2D" uid="uid://sca242aale68" path="res://Assets/graduation.png" id="3_rmy2n"]
+[ext_resource type="Texture2D" uid="uid://72y70n2d12fy" path="res://Assets/calendar.png" id="4_m41ih"]
 [ext_resource type="Texture2D" uid="uid://ik64smu5ojxa" path="res://Assets/chat.png" id="7_tsc25"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7clhs"]
@@ -54,7 +55,7 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gy0ga"]
 shader = SubResource("Shader_wqonv")
-shader_parameter/focus_color = Color(0.827451, 0, 0.45098, 1)
+shader_parameter/focus_color = Color(1, 1, 1, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gpa80"]
 shader = SubResource("Shader_wqonv")
@@ -121,7 +122,7 @@ stretch_mode = 3
 material = SubResource("ShaderMaterial_gy0ga")
 layout_mode = 2
 size_flags_horizontal = 3
-texture_normal = ExtResource("7_tsc25")
+texture_normal = ExtResource("4_m41ih")
 stretch_mode = 3
 
 [node name="CommunicationButton" type="TextureButton" parent="Control2/Footer/HBoxContainer"]

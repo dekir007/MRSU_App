@@ -46,7 +46,7 @@ func change_tabs(tab : PackedScene, new_id : Globals.RedirectFrom):
 	if new_id == current_tab_id:
 		return
 	match current_tab_id:
-		Globals.RedirectFrom.Profile:
+		-1, Globals.RedirectFrom.Profile:
 			profile_button.material.set_shader_parameter("focus_color", Vector3(0.95,0.95,0.95))
 		Globals.RedirectFrom.Discipline:
 			subjects_button.material.set_shader_parameter("focus_color", Vector3(0.95,0.95,0.95))
@@ -70,7 +70,7 @@ func change_tabs(tab : PackedScene, new_id : Globals.RedirectFrom):
 			communication_button.material.set_shader_parameter("focus_color", Vector3.ZERO)
 		Globals.RedirectFrom.Timetable:
 			Globals.redirect_from = Globals.RedirectFrom.Timetable
-			time_table_button.material.set_shader_parameter("focus_color", Vector3(1,0,0))
+			time_table_button.material.set_shader_parameter("focus_color", Vector3.ZERO)
 	main.add_child(current_tab)
 	main.move_child(current_tab,0)
 	

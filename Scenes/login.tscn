@@ -182,10 +182,10 @@ theme_override_colors/font_placeholder_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 64
 theme_override_styles/focus = SubResource("StyleBoxEmpty_imjxv")
 placeholder_text = "Enter your password"
-secret = true
 context_menu_enabled = false
 virtual_keyboard_type = 6
 flat = true
+secret = true
 script = ExtResource("7_b4s10")
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer2/HBoxContainer/Password"]

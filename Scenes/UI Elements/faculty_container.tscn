@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scenes/UI Elements/faculty_container.gd" id="1_qdcbf"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_goh0d"]
-font_size = 60
+font_size = 80
 
 [node name="FacultyContainer" type="MarginContainer"]
 theme_override_constants/margin_right = 50

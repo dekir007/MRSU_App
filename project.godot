@@ -11,9 +11,10 @@ config_version=5
 [application]
 
 config/name="MRSU App"
+config/tags=PackedStringArray("mobile")
 run/main_scene="res://Scenes/flash_start_screen.tscn"
 config/quit_on_go_back=false
-config/features=PackedStringArray("4.1", "Mobile")
+config/features=PackedStringArray("4.2", "Mobile")
 run/low_processor_mode=true
 config/icon="res://icon.svg"
 
@@ -34,11 +35,20 @@ window/size/viewport_height=1920
 window/size/window_width_override=540
 window/size/window_height_override=960
 window/stretch/mode="canvas_items"
+window/stretch/aspect="keep_width"
 window/handheld/orientation=1
 
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/collapsible_container/plugin.cfg")
+
+[file_customization]
+
+folder_colors={
+"res://Assets/": "teal",
+"res://Scenes/": "green",
+"res://Scripts/": "red"
+}
 
 [gui]
 

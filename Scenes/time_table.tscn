@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dvcfgct4hiex2"]
+[gd_scene load_steps=13 format=3 uid="uid://dvcfgct4hiex2"]
 
 [ext_resource type="Script" path="res://Scenes/time_table.gd" id="1_iob2m"]
 
@@ -12,7 +12,7 @@ corner_radius_bottom_left = 50
 
 [sub_resource type="LabelSettings" id="LabelSettings_rx5fs"]
 line_spacing = 15.0
-font_size = 60
+font_size = 80
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 
@@ -30,6 +30,43 @@ corner_radius_bottom_left = 50
 [sub_resource type="LabelSettings" id="LabelSettings_eui6y"]
 font_size = 32
 font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a3lcr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kj4rr"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_p1pqe"]
+font_size = 64
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ohr0s"]
+content_margin_left = 25.0
+content_margin_top = 15.0
+content_margin_right = 25.0
+content_margin_bottom = 15.0
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.0235294, 0.462745, 0.952941, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ofqh"]
+content_margin_left = 25.0
+content_margin_top = 15.0
+content_margin_right = 25.0
+content_margin_bottom = 15.0
+bg_color = Color(0.705882, 0.462745, 0.960784, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_syckp"]
 
 [node name="TimeTable" type="Control"]
 layout_mode = 3
@@ -66,6 +103,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_dkg5t")
 
 [node name="DiscNameLabel" type="Label" parent="MainVbox/Header"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 text = "Timetable"
 label_settings = SubResource("LabelSettings_rx5fs")
@@ -167,48 +205,155 @@ grggrr
 rggrr"
 label_settings = SubResource("LabelSettings_eui6y")
 
-[node name="Calendar" type="Control" parent="MainVbox/ScrollContainer/Items"]
-custom_minimum_size = Vector2(0, 500)
+[node name="HSeparator2" type="HSeparator" parent="MainVbox/ScrollContainer/Items"]
+layout_mode = 2
+theme_override_constants/separation = 250
+theme_override_styles/separator = SubResource("StyleBoxEmpty_a3lcr")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainVbox/ScrollContainer/Items"]
 layout_mode = 2
 
-[node name="DateInput" type="LineEdit" parent="MainVbox/ScrollContainer/Items/Calendar"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -33.5313
-offset_top = -15.5
-offset_right = 33.5313
-offset_bottom = 15.5
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Left" type="Button" parent="MainVbox/ScrollContainer/Items/HBoxContainer"]
+layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
-theme_override_colors/font_placeholder_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 48
-placeholder_text = "Введите дату: yyyy-mm-dd"
-expand_to_text_length = true
-context_menu_enabled = false
+theme_override_styles/focus = SubResource("StyleBoxEmpty_kj4rr")
+text = "Лево"
 flat = true
 
-[node name="Button" type="Button" parent="MainVbox/ScrollContainer/Items/Calendar"]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.872
-anchor_right = 0.5
-anchor_bottom = 0.872
-offset_left = -50.0
-offset_top = -100.0
-offset_right = 50.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_font_sizes/font_size = 32
-text = "Нажать"
+[node name="MonthLabel" type="Label" parent="MainVbox/ScrollContainer/Items/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "21"
+label_settings = SubResource("LabelSettings_p1pqe")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Right" type="Button" parent="MainVbox/ScrollContainer/Items/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 48
+theme_override_styles/focus = SubResource("StyleBoxEmpty_kj4rr")
+text = "Право"
+flat = true
+
+[node name="MarginContainer" type="MarginContainer" parent="MainVbox/ScrollContainer/Items"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_right = 25
+
+[node name="Days" type="HBoxContainer" parent="MainVbox/ScrollContainer/Items/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Button1" type="Button" parent="MainVbox/ScrollContainer/Items/MarginContainer/Days"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 56
+theme_override_styles/normal = SubResource("StyleBoxFlat_ohr0s")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5ofqh")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_5ofqh")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_5ofqh")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_syckp")
+text = "ПН
+27"
+
+[node name="Button2" type="Button" parent="MainVbox/ScrollContainer/Items/MarginContainer/Days"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 56
+theme_override_styles/normal = SubResource("StyleBoxFlat_ohr0s")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5ofqh")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_5ofqh")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_5ofqh")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_syckp")
+text = "ПН
+27"
+
+[node name="Button3" type="Button" parent="MainVbox/ScrollContainer/Items/MarginContainer/Days"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 56
+theme_override_styles/normal = SubResource("StyleBoxFlat_ohr0s")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5ofqh")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_5ofqh")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_5ofqh")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_syckp")
+text = "ПН
+27"
+
+[node name="Button4" type="Button" parent="MainVbox/ScrollContainer/Items/MarginContainer/Days"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 56
+theme_override_styles/normal = SubResource("StyleBoxFlat_ohr0s")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5ofqh")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_5ofqh")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_5ofqh")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_syckp")
+text = "ПН
+27"
+
+[node name="Button5" type="Button" parent="MainVbox/ScrollContainer/Items/MarginContainer/Days"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 56
+theme_override_styles/normal = SubResource("StyleBoxFlat_ohr0s")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5ofqh")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_5ofqh")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_5ofqh")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_syckp")
+text = "ПН
+27"
+
+[node name="Button6" type="Button" parent="MainVbox/ScrollContainer/Items/MarginContainer/Days"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 56
+theme_override_styles/normal = SubResource("StyleBoxFlat_ohr0s")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5ofqh")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_5ofqh")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_5ofqh")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_syckp")
+text = "ПН
+27"
+
+[node name="Button7" type="Button" parent="MainVbox/ScrollContainer/Items/MarginContainer/Days"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 56
+theme_override_styles/normal = SubResource("StyleBoxFlat_ohr0s")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5ofqh")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_5ofqh")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_5ofqh")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_syckp")
+text = "ПН
+27"
+
+[node name="HSeparator" type="HSeparator" parent="MainVbox/ScrollContainer/Items"]
+layout_mode = 2
+theme_override_constants/separation = 250
+theme_override_styles/separator = SubResource("StyleBoxEmpty_a3lcr")
 
 [node name="TimeTable" type="MarginContainer" parent="MainVbox/ScrollContainer/Items"]
 layout_mode = 2
@@ -221,4 +366,5 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 25
 
-[connection signal="button_up" from="MainVbox/ScrollContainer/Items/Calendar/Button" to="." method="_on_button_button_up"]
+[connection signal="button_up" from="MainVbox/ScrollContainer/Items/HBoxContainer/Left" to="." method="_on_left_button_up"]
+[connection signal="button_up" from="MainVbox/ScrollContainer/Items/HBoxContainer/Right" to="." method="_on_right_button_up"]

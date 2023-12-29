@@ -10,14 +10,15 @@ corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
 [sub_resource type="LabelSettings" id="LabelSettings_3leld"]
-font_size = 36
+font_size = 48
 font_color = Color(0.0235294, 0.564706, 0.847059, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_8m0vb"]
-font_size = 24
+font_size = 32
 font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_tlq6m"]
+font_size = 24
 font_color = Color(0.278431, 0.478431, 0.992157, 1)
 
 [node name="MessageContainer" type="PanelContainer"]

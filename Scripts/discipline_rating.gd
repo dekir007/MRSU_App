@@ -31,6 +31,10 @@ func parse_data():
 				
 			sectionContainer.add_new_control_point(control_dot["Title"], details)
 		
+func _notification(what):
+	if (what == NOTIFICATION_WM_GO_BACK_REQUEST ):
+		get_tree().change_scene_to_file("res://Scenes/main.tscn")
 
-func _on_return_btn_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scenes/main.tscn")
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey and event.keycode == KEY_ESCAPE:
+		get_tree().change_scene_to_file("res://Scenes/main.tscn")
