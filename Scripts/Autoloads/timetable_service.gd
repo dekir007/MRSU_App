@@ -12,6 +12,9 @@ func _ready():
 	Globals.init_http_request(self, time_table_http_request, self._time_table_http_request_completed)
 
 func get_time_table(date : String = Time.get_datetime_string_from_system().left(10)) -> Array:
+	# TODO
+	time_table_http_request.cancel_request()
+	
 	time_table_http_request.request(Globals.base_url + "v1/StudentTimeTable?date=" + date,
 		Globals.get_auth_header(),
 		HTTPClient.METHOD_GET)

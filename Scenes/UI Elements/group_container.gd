@@ -12,7 +12,7 @@ extends VBoxContainer
 var lessons_data : Array
 
 func _ready() -> void:
-	print(group_name, collapsible_container.size, size)
+	#print(group_name, collapsible_container.size, size)
 	label.text = group_name
 	parse_lessons_data()
 	#collapsible_container.custom_minimum_size = Vector2(100000,100000)

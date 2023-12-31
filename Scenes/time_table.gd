@@ -8,65 +8,68 @@ extends Control
 @onready var group_container_scene = preload("res://Scenes/UI Elements/group_container.tscn")
 
 var data : Array
-var cur_day : Button
+var cur_day_btn : Button
 
-var week_offset:int
+var date : Date
 
 func _ready() -> void:
+	date = Date.new()
 	data = await TimetableService.get_time_table()
 	#print(JSON.stringify(data, "\t"))
 	parse_data()
 	
-	var daynum = TimetableService.get_weekday() # 1-6 пн-сб и 0 - вс
-	month_label.text = TimetableService.get_month_name()
-	cur_day = days.get_child(daynum - 1 if daynum != 0 else 6)
-	cur_day.disabled = true
-	var first_day_num = TimetableService.day() - daynum + 1
-	for cur_day_num : int in range(7):
-		var day : Button = days.get_child(cur_day_num)
-		# получаем число
-		var day_num = wrapi(first_day_num + cur_day_num, 1, TimetableService.get_days_in_month())
-		#var day_num = (TimetableService.day() + cur_day_num - daynum + 1) % (TimetableService.get_days_in_month() + 1) + (TimetableService.day() + cur_day_num - daynum + 1) / (TimetableService.get_days_in_month() + 1)
-		var month = TimetableService.month()
-		if (first_day_num + cur_day_num) > TimetableService.get_days_in_month():
-			month += 1
-		elif first_day_num + cur_day_num < 1:
-			month -= 1
-		var year = TimetableService.year()
-		if month < 1:
-			month = 12
-			year -= 1
-		if month > 12:
-			month = 1
-			year += 1
-			
-		#print("day ", day_num, " month ", month)
-		day.button_up.connect(
-			func():
-				if cur_day != null:
-					cur_day.disabled = false
-					cur_day = day
-					cur_day.disabled = true
-					if cur_day.has_meta("time"):
-						var time = cur_day.get_meta("time") as String
-						get_new_timetable(time)
-						var cur_month = int(time.substr(5,2))
-						if cur_month != TimetableService.month():
-							month_label.text = TimetableService.get_month_name(cur_month)
-				)
-		day.set_meta("time", str(year)+"-"+str(month).pad_zeros(2)+"-"+str(day_num).pad_zeros(2))
-		
-		day.text = TimetableService.WEEKDAY_NAME[(cur_day_num+1)%7] + "\n" + str(day_num)# if daynum != 0 else TimetableService.day() 
-
+	update_buttons(true)
+	
 func parse_data():
 	for group in data:
-		print(groups.size)
 		var group_container = group_container_scene.instantiate()
 		group_container.group_name = group["FacultyName"] + " (" + group["Group"] + " группа)"
 		#print(group["TimeTable"]["Lessons"])
 		group_container.lessons_data = group["TimeTable"]["Lessons"]
 		groups.add_child(group_container)
 
+func update_buttons(connect:bool = false):
+	var daynum = TimetableService.get_weekday(date.day, date.month, date.year) # 1-6 пн-сб и 0 - вс
+	if daynum == 0:
+		daynum = 7
+	var date1 = date.duplicate()
+	date1.shift_back(daynum-1) # first_day
+	print(date1)
+	
+	
+	month_label.text = TimetableService.get_month_name(date.month)
+	cur_day_btn = days.get_child(daynum - 1) #if daynum != 0 else 6)
+	cur_day_btn.disabled = true
+	var first_day_num = date.day - daynum + 1
+	if first_day_num < 0: # костыли мои любимые, как и весь этот кусок кода безбожный
+		first_day_num -= 1 
+	var i = 0
+	for day_date : Date in date1.get_week():
+		var day_btn : Button = days.get_child(i)
+		
+		if connect:
+			day_btn.button_up.connect(
+				func():
+					if cur_day_btn != null:
+						cur_day_btn.disabled = false
+						cur_day_btn = day_btn
+						cur_day_btn.disabled = true
+						if cur_day_btn.has_meta("date"):
+							var cur_date = cur_day_btn.get_meta("date") as Date
+							
+							get_new_timetable(cur_date.to_yy_mm_dd())
+							
+							if cur_date.month != date.month:
+								month_label.text = TimetableService.get_month_name(cur_date.month)
+							date = cur_date.duplicate()
+							print("cur_date: ", date.day, " ", date.month, " ", date.year)
+					)
+		
+		day_btn.set_meta("date", day_date )#str(year)+"-"+str(month).pad_zeros(2)+"-"+str(day_num).pad_zeros(2))
+		
+		day_btn.text = TimetableService.WEEKDAY_NAME[(i+1)%7] + "\n" + str(day_date.day)# if daynum != 0 else TimetableService.day() 
+		
+		i += 1
 
 func get_new_timetable(time : String) -> void:
 	for child in groups.get_children():
@@ -76,8 +79,14 @@ func get_new_timetable(time : String) -> void:
 
 
 func _on_left_button_up() -> void:
-	pass # Replace with function body.
+	date.change_to_prev_week()
+	cur_day_btn.disabled = false
+	update_buttons()
+	cur_day_btn.button_up.emit()
 
 
 func _on_right_button_up() -> void:
-	pass # Replace with function body.
+	date.change_to_next_week()
+	cur_day_btn.disabled = false
+	update_buttons()
+	cur_day_btn.button_up.emit()
