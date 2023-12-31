@@ -22,6 +22,8 @@ font_size = 24
 font_color = Color(0.278431, 0.478431, 0.992157, 1)
 
 [node name="MessageContainer" type="PanelContainer"]
+offset_right = 1006.0
+offset_bottom = 413.0
 size_flags_horizontal = 3
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_bq4wb")
@@ -37,14 +39,27 @@ theme_override_constants/margin_left = 15
 theme_override_constants/margin_top = 25
 theme_override_constants/margin_right = 15
 
-[node name="NameLabel" type="Label" parent="VBoxContainer/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="VBoxContainer/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
 text = "Name placeholderfgr"
 label_settings = SubResource("LabelSettings_3leld")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+
+[node name="DeleteButton" type="Button" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "X"
+flat = true
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -73,3 +88,5 @@ size_flags_horizontal = 8
 size_flags_vertical = 8
 text = "12:15"
 label_settings = SubResource("LabelSettings_tlq6m")
+
+[connection signal="pressed" from="VBoxContainer/MarginContainer/HBoxContainer/DeleteButton" to="." method="_on_delete_button_pressed"]

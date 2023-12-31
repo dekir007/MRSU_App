@@ -2,24 +2,17 @@ extends VBoxContainer
 
 @export var group_name : String
 
-#@onready var button: Button = $Button
 @onready var lessons: VBoxContainer = %Lessons
 @onready var label: Label = $PanelContainer/Label
 
 @onready var lesson_container_scene = preload("res://Scenes/UI Elements/lesson_container.tscn")
 @onready var no_lessons_scene = preload("res://Scenes/UI Elements/AuxiliaryElements/no_lessons.tscn")
+
 var lessons_data : Array
 
 func _ready() -> void:
-	#print(group_name, collapsible_container.size, size)
 	label.text = group_name
 	parse_lessons_data()
-	#collapsible_container.custom_minimum_size = Vector2(100000,100000)
-	#collapsible_container.custom_minimum_size = Vector2.ZERO
-	#collapsible_container.custom_minimum_size = Vector2.ZERO
-	#propagate_notification(NOTIFICATION_RESIZED)
-
-
 
 func parse_lessons_data():
 	if lessons_data.is_empty():
