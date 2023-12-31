@@ -20,9 +20,17 @@ func _ready() -> void:
 
 
 func _on_gui_input(event: InputEvent) -> void:
-	if event is InputEventScreenTouch and event.is_pressed():
+	if event is InputEventScreenTouch and event.is_released():
+		return
 		#print("left" if event.position.x < global_position.x + size.x/2 else "right")
 		Globals.current_disc_id = disc_id
 		Globals.current_disc_name = discipline_name
 		Globals.redirect_from = Globals.RedirectFrom.Timetable
 		get_tree().change_scene_to_file("res://Scenes/discipline_rating.tscn")
+
+func _on_button_pressed() -> void:
+	print(disc_id)
+	Globals.current_disc_id = disc_id
+	Globals.current_disc_name = discipline_name
+	Globals.redirect_from = Globals.RedirectFrom.Timetable
+	get_tree().change_scene_to_file("res://Scenes/discipline_rating.tscn")

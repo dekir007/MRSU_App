@@ -5,7 +5,8 @@ extends Control
 @onready var days: HBoxContainer = %Days
 @onready var month_label: Label = %MonthLabel
 
-@onready var group_container_scene = preload("res://Scenes/UI Elements/group_container.tscn")
+#@onready var group_container_scene = preload("res://Scenes/UI Elements/group_container.tscn")
+@onready var group_container_scene = preload("res://Scenes/UI Elements/group_container_no_collapsible.tscn")
 
 var data : Array
 var cur_day_btn : Button

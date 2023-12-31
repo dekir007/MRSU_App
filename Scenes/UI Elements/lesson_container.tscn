@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bv8lxo5wvmddo"]
+[gd_scene load_steps=10 format=3 uid="uid://bv8lxo5wvmddo"]
 
 [ext_resource type="Shader" path="res://Shaders/rect_to_circle.gdshader" id="1_lfo2m"]
 [ext_resource type="Script" path="res://Scenes/UI Elements/lesson_container.gd" id="1_sbykj"]
@@ -24,6 +24,8 @@ font_color = Color(0, 0, 0, 1)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dedfp"]
 shader = ExtResource("1_lfo2m")
 shader_parameter/border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mxcbd"]
 
 [node name="LessonContainer" type="PanelContainer"]
 offset_right = 900.0
@@ -72,4 +74,11 @@ text = "[b]Правоведение[/b]
 Донич"
 fit_content = true
 
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/focus = SubResource("StyleBoxEmpty_mxcbd")
+flat = true
+
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
